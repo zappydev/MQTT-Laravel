@@ -170,7 +170,7 @@ class MqttService
             {
                 $buffer .= $this->strwritestring($key,$i);
                 $callback = func_get_args()[0];
-                $buffer .= chr($callback["qos"]);
+                $buffer .= isset($callback["qos"]) ? chr($callback["qos"]) : chr($callback[$key]["qos"]);
                 $i++;
                 $this->topics[$key] = $topic;
             }
